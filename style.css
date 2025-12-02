@@ -127,6 +127,7 @@ footer {
     list-style-type: none; /* デフォルトの黒丸を削除 */
     padding: 0;
     margin: 0;
+    font-weight: bold;
 }
 
 /* 各文（リストアイテム）のスタイル */
@@ -243,4 +244,5 @@ footer {
 
 .secondary-button:hover {
     background-color: #e0e0e0;
+
 }
