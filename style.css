@@ -1,0 +1,246 @@
+/* 基本リセット */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* 薄い背景色 */
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+h1 {
+    color: #007bff;
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+/* 入力エリア */
+textarea {
+    width: calc(100% - 20px);
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border:  1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    resize: vertical;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ボタン */
+.controls {
+    text-align: center;
+}
+
+#analyze-button {
+    background-color: #28a745; /* 緑系のボタン */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#analyze-button:hover {
+    background-color: #218838;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 30px 0;
+}
+
+/* 構文ハイライトの表示エリア */
+#highlighted-output {
+    line-height: 2.2; /* 行の高さを上げて、読みやすくする */
+    font-size: 1.3em;
+    padding: 20px 0;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* 構文ハイライトの色定義 */
+#highlighted-output span {
+    padding: 3px 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    position: relative; 
+    cursor: help; 
+    white-space: pre-wrap;
+    font-weight: 500;
+}
+
+/* 💡 文法ヒントタグ */
+#grammar-hints h3 {
+    color: #4527a0;
+    margin-bottom: 10px;
+}
+
+.grammar-tag {
+    display: inline-block;
+    background-color: #d1c4e9; 
+    color: #4527a0; 
+    padding: 6px 12px;
+    margin: 5px 5px 0 0;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.placeholder-text {
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+    font-size: 1em;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* 箇条書きリストのスタイル (ul) */
+#highlighted-output ul {
+    list-style-type: none; /* デフォルトの黒丸を削除 */
+    padding: 0;
+    margin: 0;
+}
+
+/* 各文（リストアイテム）のスタイル */
+#highlighted-output li {
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #007bff; /* 文ごとに区切るための青い縦線 */
+    background-color: #ffffff; /* 白い背景 */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 🟥 機能動詞 (Be動詞・助動詞) の色分け */
+.is-functional-verb {
+    background-color: #fbe6e6; /* 薄い赤 */
+    border-bottom: 2px solid #d9534f;
+    font-weight: bold;
+}
+
+/* 🟦 前置詞の色分け */
+.is-preposition {
+    background-color: #e3f2fd; /* 薄い青 */
+    border-bottom: 2px solid #42a5f5;
+    font-weight: bold;
+}
+
+/* 🟨 接続詞の色分け (前回から再利用) */
+.is-connector {
+    background-color: #fffde7; /* 薄い黄色 */
+    border-bottom: 2px solid #ffc107;
+    font-weight: bold;
+}
+
+/* 🌟 リーディング・ポインター (クリック時) の強調スタイル 🌟 */
+#highlighted-output li.is-active {
+    /* 目立つ背景色で視線を固定 */
+    background-color: #fff8e1; /* 薄いクリーム色/黄色 */
+    
+    /* 強調していることを示す太い枠線 */
+    border: 3px solid #ffc107; 
+    
+    /* 影を強くして、浮き上がらせる */
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    
+    /* アニメーションを追加して、見た目の変化をスムーズにする */
+    transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
+}
+
+/* 通常時のリストアイテムの背景は白に戻します（強調を際立たせるため） */
+#highlighted-output li {
+    /* ... 既存のスタイル ... */
+    background-color: #ffffff; /* 通常時は白 */
+    border-left: 5px solid #007bff; 
+    /* ... */
+}
+
+/* 凡例セクションのスタイル */
+.legend-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f4f8; /* わずかに青みがかった背景 */
+    border-radius: 8px;
+}
+
+.legend-section h2 {
+    font-size: 1.2em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 0;
+    color: #444;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap; /* 画面幅が狭いときに折り返す */
+    gap: 20px; /* アイテム間の隙間 */
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #333;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    border-radius: 4px;
+    margin-right: 8px;
+    border: 1px solid #ccc; /* 枠線で見やすく */
+}
+
+/* 凡例用の色を既存のクラスから流用 */
+.legend-color.is-functional-verb { background-color: #fbe6e6; border-color: #d9534f; }
+.legend-color.is-preposition { background-color: #e3f2fd; border-color: #42a5f5; }
+.legend-color.is-connector { background-color: #fffde7; border-color: #ffc107; }
+
+/* 🗑️ 二次的なボタンのスタイル (リセットボタン用) */
+.secondary-button {
+    background-color: #f0f0f0; /* 薄い灰色 */
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    margin-top: 20px; /* 分析ボタンとの間隔 */
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}
